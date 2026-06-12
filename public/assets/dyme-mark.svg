@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Dyme mark</title>
+  <desc id="desc">Golden looping arrows on a blue square background.</desc>
+  <rect width="256" height="256" rx="24" fill="#1f4d8f" />
+  <path d="M72 74h42l-26 37a49 49 0 1 0-10 96" fill="none" stroke="#f4d25d" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M103 70 72 112 50 82Z" fill="#f4d25d"/>
+  <path d="M184 74a49 49 0 1 1-8 97" fill="none" stroke="#f4d25d" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M153 70 184 112 206 82Z" fill="#f4d25d"/>
+  <path d="M108 82c27 12 55 47 73 77" fill="none" stroke="#f4d25d" stroke-width="14" stroke-linecap="round"/>
+  <path d="M154 149 194 161 168 187Z" fill="#f4d25d"/>
+</svg>
