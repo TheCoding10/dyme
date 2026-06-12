@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dyme | Money Movement, Designed to Flow</title>
+    <meta
+      name="description"
+      content="Dyme is a concept finance platform that helps modern teams see cash flow, automate decisions, and act faster."
+    />
+    <link rel="icon" href="/assets/dobson-full-remake.avif" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        background: #f4efe7;
+        color: #172126;
+        font-family: "Manrope", sans-serif;
+      }
+
+      #root {
+        min-height: 100vh;
+      }
+
+      .boot-screen {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1), transparent 18%),
+          linear-gradient(180deg, #1f4f90 0%, #1d477e 100%);
+        z-index: 9999;
+      }
+
+      .boot-screen[data-state="ready"] {
+        display: none;
+      }
+
+      .boot-card {
+        width: min(720px, 100%);
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(8, 18, 37, 0.38);
+        color: #fff;
+      }
+
+      .boot-card h1 {
+        margin: 0 0 10px;
+        font: 700 1.5rem/1.1 "Space Grotesk", sans-serif;
+      }
+
+      .boot-card p,
+      .boot-card pre {
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .boot-card pre {
+        margin-top: 14px;
+        padding: 14px;
+        background: rgba(7, 13, 24, 0.85);
+        color: #fff4ca;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boot-screen" class="boot-screen" data-state="loading">
+      <div class="boot-card">
+        <h1>Loading Dyme</h1>
+        <p>If the React app fails to start, the error will appear below instead of a white screen.</p>
+        <pre id="boot-detail">Starting app...</pre>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script>
+      window.__DYME_BOOT_READY__ = function () {
+        var boot = document.getElementById("boot-screen");
+        if (boot) boot.dataset.state = "ready";
+      };
+
+      window.__DYME_BOOT_ERROR__ = function (error) {
+        var boot = document.getElementById("boot-screen");
+        var detail = document.getElementById("boot-detail");
+        if (!boot || !detail) return;
+        boot.dataset.state = "error";
+        detail.textContent = error && error.stack ? error.stack : String(error);
+      };
+
+      window.addEventListener("error", function (event) {
+        window.__DYME_BOOT_ERROR__(event.error || event.message || "Unknown startup error");
+      });
+
+      window.addEventListener("unhandledrejection", function (event) {
+        window.__DYME_BOOT_ERROR__(event.reason || "Unhandled promise rejection");
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
